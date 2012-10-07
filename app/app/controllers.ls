@@ -17,10 +17,11 @@ mod.PhoneDetailCtrl = [
   (scope, routeParams, phone) ->
     args = 
       phoneId: routeParams.phoneId
-
-    respData <- phone.get arguments
-    scope.phone = respData
-    scope.mainImageUrl = respData.images[0]
+      
+    do
+      respData <-! phone.get args
+      scope.phone = respData
+      scope.mainImageUrl = respData.images[0]
 
     scope.setImage = (x) -> scope.mainImageUrl = x
 ]
